@@ -45,7 +45,7 @@ A web application that helps you move into any new area by showing you informati
 * The pie chart with the Resident Age Distribution
 * The bar chart showing how the neighborhood compares with the nation for percentage of: homes with kids property owners vs. renters single residents
 
-## See [Plan] (PLAN.md) for project design and flow.
+## See [Plan](PLAN.md) for project design and flow
 
 
 ## Setup <a name="setup"></a>

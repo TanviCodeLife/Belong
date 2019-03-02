@@ -1,9 +1,9 @@
 import React from 'react';
+import Intro from './Intro';
 
 function Landing(){
   return (
-    <div></div>
-    // <Intro />
+    <Intro />
     // <InfoSearch />
     // <InfoData />
     // <InfoCulture />

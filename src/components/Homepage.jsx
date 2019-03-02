@@ -1,10 +1,9 @@
 import React from 'react';
+import Landing from './Landing';
 
 function Homepage(){
   return (
-    <div>
-    form
-    </div>
+    <Landing/>
   );
 }
 
