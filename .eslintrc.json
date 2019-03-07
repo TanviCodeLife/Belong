@@ -4,21 +4,17 @@
         "es6": true
     },
     "extends": "eslint:recommended",
-    "parser": "babel-eslint",
     "parserOptions": {
         "ecmaFeatures": {
-            "modules": true,
+            "experimentalObjectRestSpread": true,
             "jsx": true
         },
-        "ecmaVersion": 6,
         "sourceType": "module"
     },
     "plugins": [
         "react"
     ],
     "rules": {
-      "react/no-direct-mutation-state": 2,
-        "react/jsx-key": 2,
         "react/jsx-uses-vars": 2,
         "react/jsx-uses-react": 2,
         "react/jsx-no-duplicate-props": 2,
@@ -31,9 +27,10 @@
         "react/jsx-pascal-case": 2,
         "react/prop-types": 2,
         "react/jsx-indent": [
-            "error",
-            2
+              "error",
+              2
           ],
+        "react/jsx-key": 2,
         "indent": [
             "error",
             2

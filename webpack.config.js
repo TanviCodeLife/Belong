@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const {resolve} = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 
 module.exports = {
@@ -64,14 +65,14 @@ module.exports = {
             'react',
           ],
           plugins: [
-            'react-hot-loader/babel',
-            'styled-jsx/babel'
+            'react-hot-loader/babel'
           ]
         }
       }]
   },
 
   plugins: [
+    new Dotenv(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
     new HtmlWebpackPlugin({

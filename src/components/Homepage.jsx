@@ -1,9 +1,13 @@
 import React from 'react';
 import Landing from './Landing';
+import Form from './Form';
 
 function Homepage(){
   return (
-    <Landing/>
+    <div>
+      <Landing/>
+      <Form/>
+    </div>
   );
 }
 
