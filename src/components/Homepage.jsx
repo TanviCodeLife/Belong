@@ -1,13 +1,18 @@
 import React from 'react';
 import Landing from './Landing';
-import Form from './Form';
+
+import styled from 'styled-components';
+
+const HomePageStyles = styled.div`
+
+`
 
 function Homepage(){
   return (
-    <div>
-      <Landing/>
-      <Form/>
-    </div>
+    <HomePageStyles>
+      <Landing />
+
+    </HomePageStyles>
   );
 }
 

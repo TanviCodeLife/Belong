@@ -9,7 +9,7 @@ import { Switch, Route } from 'react-router-dom';
 function App(){
   return (
     <div>
-      <Header/>
+      <Header />
       <Homepage />
     </div>
   );

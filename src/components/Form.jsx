@@ -1,15 +1,18 @@
 import React from 'react';
+import './assets/styles/Form';
 
-function From(){
+
+function Form(){
   return (
-    <div>
-      <form>
-        <label>
-          <i class="ion-location"></i>
-        </label>
+      <form className='form'>
+        <input className='address-input' type="text" name="address"/>
+        <select>
+          <option value="rent">Rent</option>
+          <option value="buy">Buy</option>
+        </select>
+        <button className='submit-button' type="submit">Look</button>
       </form>
-    </div>
   );
 }
 
-export default From;
+export default Form;
