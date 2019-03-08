@@ -9,7 +9,7 @@ export const requestCoords = ({ lat, lng }) => ({
 
 export function fetchCoords(address){
   return function(dispatch){
-    return fetch('https://maps.googleapis.com/maps/api/geocode/json?address='+address+'&key='+process.env.GOOGLE_MAPS_API)
+    return fetch('https://maps.googleapis.com/maps/api/geocode/json?address='+address+'&key='+process.env.GOOGLE_API_KEY)
     .then((response) => response.json(),
     error => console.log('An error occured', error))
     .then((json) => {
