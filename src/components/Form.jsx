@@ -21,7 +21,7 @@ const SelectInputStyles = styled.select`
   -webkit-appearance: button;
   -webkit-border-radius: 2px;
   width: 50%;
-  border: 1px solid #ccc;
+  border: 1px solid transparent;
   padding-top: 12px;
   font-size: 1.15em;
   padding-bottom: 12px;
