@@ -14,6 +14,7 @@ export function fetchCoords(address){
     error => console.log('An error occured', error))
     .then((json) => {
       const newCoords = json.results[0].geometry.location;
+      console.log(newCoords);
       dispatch(requestCoords(newCoords));
     });
   };
