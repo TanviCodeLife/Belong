@@ -22,13 +22,11 @@ const FormStyles = styled.div`
   right: 30%;
   width: 50%;
   height: 5%;
-  padding-left: -30%;
 `
 
 
 function Landing(){
   return (
-
     <LandingShotStyles>
       <ImageStyles src={LandingShot} alt='City Shot'/>
       <FormStyles>

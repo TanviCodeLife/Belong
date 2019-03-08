@@ -21,13 +21,15 @@ const SelectInputStyles = styled.select`
   -webkit-appearance: button;
   -webkit-border-radius: 2px;
   width: 50%;
-  border: 2px solid transparent;
+  border: 1px solid #ccc;
   padding-top: 12px;
   font-size: 1.15em;
   padding-bottom: 12px;
-  background-image: url(http://i62.tinypic.com/15xvbd5.png), -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+  background: url(http://i62.tinypic.com/2e3ybe1.jpg) no-repeat right center;
   background-position: 97% center;
   background-repeat: no-repeat;
+  overflow: hidden;
+  background-color: white;
 `
 
 const FormButtonStyles = styled.button`
