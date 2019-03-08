@@ -1,5 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import { fetchCoords } from './../actions';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 const FormStyles = styled.form`
   margin-left: 22%;
@@ -49,10 +52,22 @@ const FormButtonStyles = styled.button`
 }
 `
 
-function Form(){
+function Form({ dispatch }){
+  let _address = null;
+
+  function handleNewAddressFormSubmission(event){
+    event.preventDefault();
+    const formattedAddress = _address.value.replace(/\s/g, '+');
+    dispatch(fetchCoords(formattedAddress));
+  }
+
   return (
-      <FormStyles>
-        <FormInputStyles type='text' placeholder='Where do you want to belong?'/>
+      <FormStyles onSubmit={handleNewAddressFormSubmission}>
+        <FormInputStyles
+          type='text'
+          placeholder='Where do you want to belong?'
+          id='address'
+          ref={(input) => {_address = input;}}/>
         <SelectInputStyles>
           <option value="rent">Rent</option>
           <option value="buy">Buy</option>
@@ -62,4 +77,8 @@ function Form(){
   );
 }
 
-export default Form;
+Form.propTypes = {
+  dispatch: PropTypes.func
+}
+
+export default connect()(Form);
