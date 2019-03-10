@@ -30,6 +30,22 @@ describe('getCoordsReducer', () => {
   test('should return default state if no action type is recognized', () => {
     expect(getCoordsReducer({}, {type: null})).toEqual({});
   });
+});
 
 
+describe('hoodListReducer', () => {
+  let action;
+  const sampleHoodData = {
+    displayName: 'Bethany',
+    hoodLat: 45.56433759999999,
+    hoodLng: -122.8411631,
+    id: 0,
+    commuteTime: 0,
+    rentalRate: 0,
+    buyRate: 0
+  }
+
+  test('should return default state if no action type is defined', () => {
+    expect(hoodListReducer({}, {type: null})).toEqual({});
+  });
 });

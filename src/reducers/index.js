@@ -3,7 +3,7 @@ import hoodsListReducer from './hoodsListReducer';
 import { combineReducers } from 'redux';
 
 const rootReducer = combineReducers({
-  currentCoords: getCoordsReducer
+  currentCoords: getCoordsReducer,
   masterHoodsList: hoodsListReducer
 });
 
