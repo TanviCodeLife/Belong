@@ -12,7 +12,8 @@ describe("rootReducer", () => {
 
   test('Should return default state if no action type is recognized', () => {
     expect(rootReducer({}, {type: null})).toEqual({
-      currentCoords: {}
+      currentCoords: {},
+      masterHoodsList: {}
     });
   });
 
@@ -20,8 +21,8 @@ describe("rootReducer", () => {
     expect(store.getState().currentCoords).toEqual(getCoordsReducer(undefined, {type: null}));
   });
 
-  test('should return default state for hoosListReducer if no action types is recognized', () => {
-    expect(store.getState().masterHoodsList).toEqual(hoodsListReducer(undefned, {type: null}));
+  test('should return default state for hoodsListReducer if no action types is recognized', () => {
+    expect(store.getState().masterHoodsList).toEqual(hoodsListReducer(undefined, {type: null}));
   });
 });
 
@@ -46,6 +47,6 @@ describe('hoodListReducer', () => {
   }
 
   test('should return default state if no action type is defined', () => {
-    expect(hoodListReducer({}, {type: null})).toEqual({});
+    expect(hoodsListReducer({}, {type: null})).toEqual({});
   });
 });
