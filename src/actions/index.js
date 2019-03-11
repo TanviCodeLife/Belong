@@ -35,10 +35,12 @@ export function fetchNeighborhoods(newCoords, dispatch){
   .then(function(json) {
     if(json.results) {
       console.log('hoods', json.results);
+      const originsArr = [];
       json.results.forEach(hood => {
         const displayName = hood.displayName;
         const hoodLat = hood.location.lat;
         const hoodLng = hood.location.lng;
+        originsArr.push(hoodLat + ',' + hoodLng);
         const hoodId = v4();
         console.log(displayName);
         dispatch(saveHoods(displayName, hoodLat, hoodLng, hoodId));
@@ -46,7 +48,9 @@ export function fetchNeighborhoods(newCoords, dispatch){
     } else {
       console.log('No neighborhoods found');
     }
-    dispatch(requestCoords(newCoords));
+    const origins = originsArr.join('|');
+    console.log(origins);
+    
 
   });
 }
