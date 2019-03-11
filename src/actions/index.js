@@ -16,6 +16,7 @@ export const saveHoods = (hoodName, hoodLat , hoodLng, hoodId) => ({
     hoodId: hoodId
 });
 
+
 export function fetchCoords(address){
   return function(dispatch){
     return fetch('https://maps.googleapis.com/maps/api/geocode/json?address='+address+'&key='+process.env.GOOGLE_API_KEY)
@@ -24,6 +25,7 @@ export function fetchCoords(address){
     .then((json) => {
       const newCoords = json.results[0].geometry.location;
       console.log(newCoords);
+      dispatch(requestCoords(newCoords));
       fetchNeighborhoods(newCoords, dispatch);
     });
   };
@@ -50,7 +52,22 @@ export function fetchNeighborhoods(newCoords, dispatch){
     }
     const origins = originsArr.join('|');
     console.log(origins);
-    
+  });
+}
 
+export function fetchDistanceAndTime(origins, newCoords, dispatch){
+  return fetch(`https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=${ origins }&destinations=${ newCoords }&key=${ process.env.GOOGLE_API_KEY }`)
+  .then((response) => response.json(),
+  error => console.log('An error occurred.', error))
+  .then(function(json) {
+    if(json.origin_addresses) {
+      console.log('distances', json.origin_addresses);
+      json.rows.forEach(hood => {
+        const hoodDistance = hood.elements[0].distance.text;
+        const hoodCommuteTime = hood.elements[0].duration.text;
+        console.log(hoodDistance, hoodCommuteTime);
+        dispatch(saveCommutes(hoodDistance, hoodCommuteTime));
+      })
+    }
   });
 }
