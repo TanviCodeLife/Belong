@@ -18,13 +18,6 @@ export const saveHoods = (hoodName, hoodLat , hoodLng, hoodId, hoodDistance, hoo
     hoodCommuteTime: hoodCommuteTime
 });
 
-// export const saveCommutes = (hoodDistance, hoodCommuteTime) => ({
-//   type: types.SAVE_COMMUTE,
-//     hoodDistance: hoodDistance,
-//     hoodCommuteTime: hoodCommuteTime
-// });
-
-
 export function fetchCoords(address){
   return function(dispatch){
     return fetch('https://maps.googleapis.com/maps/api/geocode/json?address='+address+'&key='+process.env.GOOGLE_API_KEY)
@@ -60,16 +53,13 @@ export function fetchNeighborhoods(newCoords, dispatch){
           hoodLat: hoodLat,
           hoodLng: hoodLng,
           hoodId: hoodId
-        }
-      });
-        console.log(originsArr, 'originsArr');
-        console.log(originsData, 'originsData');
+          }
+        });
       });
     } else {
       console.log('No neighborhoods found');
     }
     const origins = originsArr.join('|');
-    console.log(origins);
     fetchDistanceAndTime(origins, newCoords, dispatch, originsData);
   });
 }
@@ -85,26 +75,8 @@ export function fetchDistanceAndTime(origins, newCoords, dispatch, originsData){
       json.rows.forEach((hood, i) => {
         const hoodDistance = hood.elements[0].distance.text;
         const hoodCommuteTime = hood.elements[0].duration.text;
-        // let newHood = makeHood(originsData[i].displayName, originsData[i].hoodLat, originsData[i].hoodLng, originsData[i].hoodId, hoodDistance, hoodCommuteTime);
-        // console.log(newHood, 'newHood');
-        // hoodData = Object.assign({}, hoodData, newHood);
-        // console.log(hoodDistance, hoodCommuteTime);
-        // console.log(hoodData, 'hoodData');
         dispatch(saveHoods(originsData[i].displayName, originsData[i].hoodLat, originsData[i].hoodLng, originsData[i].hoodId, hoodDistance, hoodCommuteTime));
       });
     }
   });
 }
-
-// const makeHood = (displayName, hoodLat, hoodLng, hoodId, hoodDistance, hoodCommuteTime) => {
-//   return {
-//     [hoodId]:{
-//       hoodName: displayName,
-//       hoodLat: hoodLat,
-//       hoodLng: hoodLng,
-//       hoodId: hoodId,
-//       hoodDistance: hoodDistance,
-//       hoodCommuteTime: hoodCommuteTime
-//     }
-//   }
-// }
