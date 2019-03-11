@@ -66,15 +66,15 @@ export function fetchNeighborhoods(newCoords, dispatch){
 }
 
 export function fetchDistanceAndTime(origins, newCoords, dispatch){
-  return fetch(`https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=${ origins }&destinations=${ newCoords }&key=${ process.env.GOOGLE_API_KEY }`)
+  return fetch(`https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=${ origins }&destinations=${ newCoords.lat }, ${ newCoords.lng }&key=${ process.env.GOOGLE_API_KEY }`)
   .then((response) => response.json(),
   error => console.log('An error occurred.', error))
   .then(function(json) {
     if(json.origin_addresses) {
-      console.log('distances', json.origin_addresses);
+      console.log('distances', json.origin_addresses.rows);
       json.rows.forEach(hood => {
         const hoodDistance = hood.elements[0].distance.text;
-        const hoodCommuteTime = hood.elements[1].duration.text;
+        const hoodCommuteTime = hood.elements[0].duration.text;
         console.log(hoodDistance, hoodCommuteTime);
         dispatch(saveCommutes(hoodDistance, hoodCommuteTime));
       })
