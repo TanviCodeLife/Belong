@@ -8,21 +8,21 @@ export const requestCoords = ({ lat, lng }) => ({
 })
 
 
-export const saveHoods = (hoodName, hoodLat , hoodLng, hoodId) => ({
+export const saveHoods = (hoodName, hoodLat , hoodLng, hoodId, hoodDistance, hoodCommuteTime) => ({
   type: types.SAVE_HOOD,
     hoodName: hoodName,
     hoodLat: hoodLat,
     hoodLng: hoodLng,
     hoodId: hoodId,
-    hoodDistance: 0,
-    hoodCommuteTime: 0
-});
-
-export const saveCommutes = (hoodDistance, hoodCommuteTime) => ({
-  type: types.SAVE_COMMUTE,
     hoodDistance: hoodDistance,
     hoodCommuteTime: hoodCommuteTime
 });
+
+// export const saveCommutes = (hoodDistance, hoodCommuteTime) => ({
+//   type: types.SAVE_COMMUTE,
+//     hoodDistance: hoodDistance,
+//     hoodCommuteTime: hoodCommuteTime
+// });
 
 
 export function fetchCoords(address){
@@ -42,42 +42,69 @@ export function fetchCoords(address){
 
 export function fetchNeighborhoods(newCoords, dispatch){
   const originsArr = [];
+  let originsData = {};
   return fetch(`https://maps.googleapis.com/maps/api/place/textsearch/json?location=${ newCoords.lat }, ${ newCoords.lng }&radius=5000&type=neighborhood&key=${ process.env.GOOGLE_API_KEY }`).then((response) => response.json(),
   error => console.log('An error occurred.', error))
   .then(function(json) {
     if(json.results) {
       console.log('hoods', json.results);
-      json.results.forEach(hood => {
+      json.results.forEach((hood, i) => {
         const displayName = hood.name;
         const hoodLat = hood.geometry.location.lat;
         const hoodLng = hood.geometry.location.lng;
         originsArr.push(hoodLat + ',' + hoodLng);
         const hoodId = v4();
+        originsData = Object.assign({}, originsData, {
+          [i]: {
+          displayName: displayName,
+          hoodLat: hoodLat,
+          hoodLng: hoodLng,
+          hoodId: hoodId
+        }
+      });
         console.log(originsArr, 'originsArr');
-        dispatch(saveHoods(displayName, hoodLat, hoodLng, hoodId));
+        console.log(originsData, 'originsData');
       });
     } else {
       console.log('No neighborhoods found');
     }
     const origins = originsArr.join('|');
     console.log(origins);
-    fetchDistanceAndTime(origins, newCoords, dispatch);
+    fetchDistanceAndTime(origins, newCoords, dispatch, originsData);
   });
 }
 
-export function fetchDistanceAndTime(origins, newCoords, dispatch){
+export function fetchDistanceAndTime(origins, newCoords, dispatch, originsData){
+  let hoodData = {};
   return fetch(`https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=${ origins }&destinations=${ newCoords.lat }, ${ newCoords.lng }&key=${ process.env.GOOGLE_API_KEY }`)
   .then((response) => response.json(),
   error => console.log('An error occurred.', error))
   .then(function(json) {
     if(json.origin_addresses) {
       console.log('distances', json.origin_addresses.rows);
-      json.rows.forEach(hood => {
+      json.rows.forEach((hood, i) => {
         const hoodDistance = hood.elements[0].distance.text;
         const hoodCommuteTime = hood.elements[0].duration.text;
-        console.log(hoodDistance, hoodCommuteTime);
-        dispatch(saveCommutes(hoodDistance, hoodCommuteTime));
-      })
+        // let newHood = makeHood(originsData[i].displayName, originsData[i].hoodLat, originsData[i].hoodLng, originsData[i].hoodId, hoodDistance, hoodCommuteTime);
+        // console.log(newHood, 'newHood');
+        // hoodData = Object.assign({}, hoodData, newHood);
+        // console.log(hoodDistance, hoodCommuteTime);
+        // console.log(hoodData, 'hoodData');
+        dispatch(saveHoods(originsData[i].displayName, originsData[i].hoodLat, originsData[i].hoodLng, originsData[i].hoodId, hoodDistance, hoodCommuteTime));
+      });
     }
   });
 }
+
+// const makeHood = (displayName, hoodLat, hoodLng, hoodId, hoodDistance, hoodCommuteTime) => {
+//   return {
+//     [hoodId]:{
+//       hoodName: displayName,
+//       hoodLat: hoodLat,
+//       hoodLng: hoodLng,
+//       hoodId: hoodId,
+//       hoodDistance: hoodDistance,
+//       hoodCommuteTime: hoodCommuteTime
+//     }
+//   }
+// }

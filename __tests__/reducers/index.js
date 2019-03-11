@@ -41,8 +41,8 @@ describe('hoodListReducer', () => {
     hoodLat: 45.56433759999999,
     hoodLng: -122.8411631,
     hoodId: 0,
-    hoodDistance: 0,
-    hoodCommuteTime: 0
+    hoodDistance: 2,
+    hoodCommuteTime: 1
   }
 
   test('should return default state if no action type is defined', () => {
@@ -57,8 +57,8 @@ describe('hoodListReducer', () => {
       hoodLat: hoodLat,
       hoodLng: hoodLng,
       hoodId: hoodId,
-      hoodDistance: 0,
-      hoodCommuteTime: 0
+      hoodDistance: hoodDistance,
+      hoodCommuteTime: hoodCommuteTime
     };
     expect(hoodsListReducer({}, action)).toEqual({
       [hoodId] : {
@@ -71,9 +71,4 @@ describe('hoodListReducer', () => {
       }
     });
   });
-
-
-  // test('should add a neighborhood commute and distance', () = {
-  //   expect
-  // });
 });
