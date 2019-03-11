@@ -1,19 +1,18 @@
 import * as types from './../constants/ActionTypes';
 
 export default (state = {}, action) => {
-  let newSate;
-  const { displayName, hoodLat, hoodLng, id } = action;
+  let newState;
+  const { hoodName, hoodLat, hoodLng, hoodId, hoodDistance, hoodCommuteTime } = action;
   switch(action.type) {
     case 'SAVE_HOOD':
       newState = Object.assign({}, state, {
-        [id]:{
-          displayName: displayName,
+        [hoodId]:{
+          hoodName: hoodName,
           hoodLat: hoodLat,
-          hooLng: hoodLng,
-          id: id,
-          commuteTime: 0,
-          rentalRate: 0,
-          buyRate: 0
+          hoodLng: hoodLng,
+          hoodId: hoodId,
+          hoodDistance: hoodDistance,
+          hoodCommuteTime: hoodCommuteTime
         }
       });
       return newState;

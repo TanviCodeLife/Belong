@@ -13,7 +13,9 @@ export const saveHoods = (hoodName, hoodLat , hoodLng, hoodId) => ({
     hoodName: hoodName,
     hoodLat: hoodLat,
     hoodLng: hoodLng,
-    hoodId: hoodId
+    hoodId: hoodId,
+    hoodDistance: 0,
+    hoodCommuteTime: 0
 });
 
 export const saveCommutes = (hoodDistance, hoodCommuteTime) => ({
@@ -29,6 +31,7 @@ export function fetchCoords(address){
     .then((response) => response.json(),
     error => console.log('An error occured', error))
     .then((json) => {
+      console.log(json);
       const newCoords = json.results[0].geometry.location;
       console.log(newCoords);
       dispatch(requestCoords(newCoords));
@@ -45,14 +48,14 @@ export function fetchNeighborhoods(newCoords, dispatch){
       console.log('hoods', json.results);
       const originsArr = [];
       json.results.forEach(hood => {
-        const displayName = hood.displayName;
-        const hoodLat = hood.location.lat;
-        const hoodLng = hood.location.lng;
+        const displayName = hood.name;
+        const hoodLat = hood.geometry.location.lat;
+        const hoodLng = hood.geometry.location.lng;
         originsArr.push(hoodLat + ',' + hoodLng);
         const hoodId = v4();
-        console.log(displayName);
+        console.log(originsArr, 'originsArr');
         dispatch(saveHoods(displayName, hoodLat, hoodLng, hoodId));
-      })
+      });
     } else {
       console.log('No neighborhoods found');
     }

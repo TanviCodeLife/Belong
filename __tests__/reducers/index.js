@@ -37,16 +37,43 @@ describe('getCoordsReducer', () => {
 describe('hoodListReducer', () => {
   let action;
   const sampleHoodData = {
-    displayName: 'Bethany',
+    hoodName: 'Bethany',
     hoodLat: 45.56433759999999,
     hoodLng: -122.8411631,
-    id: 0,
-    commuteTime: 0,
-    rentalRate: 0,
-    buyRate: 0
+    hoodId: 0,
+    hoodDistance: 0,
+    hoodCommuteTime: 0
   }
 
   test('should return default state if no action type is defined', () => {
     expect(hoodsListReducer({}, {type: null})).toEqual({});
   });
+
+  test('should add a new neighborhood to the masterHoodsList', () => {
+    const { hoodName, hoodLat, hoodLng, hoodId, hoodDistance, hoodCommuteTime } = sampleHoodData;
+    action = {
+      type: 'SAVE_HOOD',
+      hoodName: hoodName,
+      hoodLat: hoodLat,
+      hoodLng: hoodLng,
+      hoodId: hoodId,
+      hoodDistance: 0,
+      hoodCommuteTime: 0
+    };
+    expect(hoodsListReducer({}, action)).toEqual({
+      [hoodId] : {
+        hoodName: hoodName,
+        hoodLat: hoodLat,
+        hoodLng: hoodLng,
+        hoodId: hoodId,
+        hoodDistance: hoodDistance,
+        hoodCommuteTime: hoodCommuteTime
+      }
+    });
+  });
+
+
+  // test('should add a neighborhood commute and distance', () = {
+  //   expect
+  // });
 });
