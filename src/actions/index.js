@@ -41,12 +41,12 @@ export function fetchCoords(address){
 }
 
 export function fetchNeighborhoods(newCoords, dispatch){
+  const originsArr = [];
   return fetch(`https://maps.googleapis.com/maps/api/place/textsearch/json?location=${ newCoords.lat }, ${ newCoords.lng }&radius=5000&type=neighborhood&key=${ process.env.GOOGLE_API_KEY }`).then((response) => response.json(),
   error => console.log('An error occurred.', error))
   .then(function(json) {
     if(json.results) {
       console.log('hoods', json.results);
-      const originsArr = [];
       json.results.forEach(hood => {
         const displayName = hood.name;
         const hoodLat = hood.geometry.location.lat;
@@ -74,7 +74,7 @@ export function fetchDistanceAndTime(origins, newCoords, dispatch){
       console.log('distances', json.origin_addresses);
       json.rows.forEach(hood => {
         const hoodDistance = hood.elements[0].distance.text;
-        const hoodCommuteTime = hood.elements[0].duration.text;
+        const hoodCommuteTime = hood.elements[1].duration.text;
         console.log(hoodDistance, hoodCommuteTime);
         dispatch(saveCommutes(hoodDistance, hoodCommuteTime));
       })
