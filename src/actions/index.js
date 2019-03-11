@@ -16,6 +16,12 @@ export const saveHoods = (hoodName, hoodLat , hoodLng, hoodId) => ({
     hoodId: hoodId
 });
 
+export const saveCommutes = (hoodDistance, hoodCommuteTime) => ({
+  type: types.SAVE_COMMUTE,
+    hoodDistance: hoodDistance,
+    hoodCommuteTime: hoodCommuteTime
+});
+
 
 export function fetchCoords(address){
   return function(dispatch){
@@ -52,6 +58,7 @@ export function fetchNeighborhoods(newCoords, dispatch){
     }
     const origins = originsArr.join('|');
     console.log(origins);
+    fetchDistanceAndTime(origins, newCoords, dispatch);
   });
 }
 
