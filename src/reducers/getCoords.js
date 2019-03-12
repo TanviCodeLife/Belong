@@ -1,7 +1,10 @@
-import * as types from './../constants/ActionTypes';
+import constants as types from './../constants';
 
-export default( state = {}, action) => {
-  let newCoords;
+
+const { types, initialState } = constants;
+
+const getCoordsReducer = (state = initialState.userCoords, action) => {
+  let newCoords ;
   let newCoordsStateSlice;
   switch (action.type) {
     case types.GET_COORDS:
@@ -16,3 +19,5 @@ export default( state = {}, action) => {
       return state;
   }
 };
+
+export default getCoordsReducer;
