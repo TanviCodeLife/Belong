@@ -1,11 +1,13 @@
 import React from 'react';
-import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
+import { Map, InfoWindow, Marker, Circle, GoogleApiWrapper } from 'google-maps-react';
 import { connect } from 'react-redux';
 
 const style = {
-  width: '500px',
-  height: '500px',
-  position: 'relative'
+  width: '50%',
+  height: '70%',
+  position: 'relative',
+  outline: '2px solid tomato',
+  outlineOffset: '5px'
 };
 
 export class MapContainer extends React.Component {
@@ -38,6 +40,7 @@ export class MapContainer extends React.Component {
         }}
         zoom={12}>
 
+
         {Object.keys(this.props.userData.hoodData).map((hoodId) => {
 
           let marker = this.props.userData.hoodData[hoodId]
@@ -50,6 +53,8 @@ export class MapContainer extends React.Component {
             key={hoodId} />
         }
       )}
+
+
 
       <InfoWindow
          marker={this.state.activeMarker}

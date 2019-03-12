@@ -21,8 +21,8 @@ const FormStyles = styled.div`
   position: absolute;
   display: block;
   top: 70%;
-  right: 30%;
-  width: 50%;
+  right: 25%;
+  width: 70%;
   height: 5%;
 `
 

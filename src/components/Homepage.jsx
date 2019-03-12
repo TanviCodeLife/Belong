@@ -8,7 +8,7 @@ const HomePageStyles = styled.div`
 
 const LandingStyles = styled.div`
   height: 100%;
-  margin-bottom: 20%;
+  margin-bottom: 5%;
 `
 
 function Homepage(){

@@ -15,24 +15,27 @@ const FormStyles = styled.form`
 
 const FormInputStyles = styled.input`
   width: 100%;
-  border: 2px solid transparent;
+  border: 2px solid #ffcc99;
   background-image:url(./assets/Portland_Belong.jpg);
   background-repeat: no-repeat;
   background-position: 4px 4px;
   box-sizing: border-box;
   padding-top: 12px;
   font-size: 1.15em;
+  text-indent: 2.5rem;
   padding-bottom: 12px;
+  right: -5rem;
 `
 
 const SelectInputStyles = styled.select`
   -webkit-appearance: button;
   -webkit-border-radius: 2px;
+  margin-left: 0.15%;
+  margin-right: 0.15%;
   width: 50%;
-  border: 1px solid transparent;
+  border: 1px solid #ffcc99;
   padding-top: 12px;
   font-size: 1.15em;
-  padding-left: 3rem;
   padding-bottom: 12px;
   background: url(http://i62.tinypic.com/2e3ybe1.jpg) no-repeat right center;
   background-position: 97% center;
@@ -42,8 +45,8 @@ const SelectInputStyles = styled.select`
 `;
 
 const FormButtonStyles = styled.button`
-  background: #4d0000;
-  border: 1px solid #4d0000;
+  background: #F08080;
+  border: 1px solid #F08080;
   color: #fff;
   width: 50%;
   text-align: center;
@@ -53,14 +56,14 @@ const FormButtonStyles = styled.button`
 }
   &:hover ${FormButtonStyles}{
    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-   background: #4d0000;
-   border: 1px solid #4d0000;
+   background: ff5050;
+   border: 1px solid #F08080;
 }
 `;
 
 const ImageStyle = styled.img`
   height: 2rem;
-  left: 7%;
+  left: 5%;
   margin-top: 1%;
   position relative;
 `;

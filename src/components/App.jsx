@@ -10,8 +10,8 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
   body {
-    @import url('https://fonts.googleapis.com/css?family=Lato');
-    font-family: 'Lato', sans-serif;
+    @import url('https://fonts.googleapis.com/css?family=Domine');
+    font-family: 'Domine', serif;
   }
 `;
 
@@ -26,10 +26,12 @@ export class App extends React.Component{
   }
 
 render(){
-  let renderedContent;
+  let renderedMap;
+  let renderedCard;
   console.log(this.props, 'props');
   if(this.props.userCoords.showMap){
-    renderedContent = <MapContainer userData={this.props}/>
+    renderedMap = <MapContainer userData={this.props}/>
+    renderedCard = <HoodList cardData={this.props}>
   }
   return (
       <BodyStyles>
@@ -37,6 +39,7 @@ render(){
         <Header />
         <Homepage />
         {renderedContent}
+        {renderedCard}
       </BodyStyles>
 
     );

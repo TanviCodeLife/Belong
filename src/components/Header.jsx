@@ -14,7 +14,7 @@ const HeaderStyle = styled.header`
 `;
 
 const HeaderText = styled.h1`
-
+  letter-spacing: 0.10rem;
 `
 
 const ImageStyle = styled.img`
