@@ -22,24 +22,25 @@ const BodyStyles = styled.div`
 export class App extends React.Component{
   constructor(props){
     super(props);
-
+    const { dispatch } = props;
   }
 
 render(){
-console.log(this.props, 'props');
+  let renderedContent;
+  console.log(this.props, 'props');
   if(this.props.userCoords.showMap){
-    renderedContent = <MapContainer hoodData={this.props.hoodData}>
+    renderedContent = <MapContainer userData={this.props}/>
   }
   return (
-    <BodyStyles>
-      <GlobalStyles />
-      <Header />
-      <Homepage />
-      {renderedContent}
-    </BodyStyles>
+      <BodyStyles>
+        <GlobalStyles />
+        <Header />
+        <Homepage />
+        {renderedContent}
+      </BodyStyles>
 
-  );
-}
+    );
+  }
 }
 
 App.propTypes = {
