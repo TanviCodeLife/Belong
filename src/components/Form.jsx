@@ -73,7 +73,7 @@ function Form({ dispatch }){
           <option value="rent">Rent</option>
           <option value="buy">Buy</option>
         </SelectInputStyles>
-        <Link to='/#map-container'><FormButtonStyles type="submit">Look</FormButtonStyles></Link>
+        <FormButtonStyles type="submit">Look</FormButtonStyles>
       </FormStyles>
   );
 }

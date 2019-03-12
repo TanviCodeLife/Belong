@@ -7,13 +7,30 @@ const HomePageStyles = styled.div`
 
 `
 
-function Homepage(){
-  return (
-    <HomePageStyles>
-      <Landing />
-      <MapContainer id='map-container'/>
-    </HomePageStyles>
-  );
+const LandingStyles = styled.div`
+  height: 100%;
+  margin-bottom: 20%;
+`
+
+class Homepage extends React.Component{
+  constructor(props) {
+    super(props)
+    this.state = {
+      isModalOpen: false
+    }
+  }
+
+  render(){
+    return (
+      <HomePageStyles>
+        <LandingStyles>
+          <Landing />
+        </LandingStyles>
+        <MapContainer id='mapcontainer'/>
+      </HomePageStyles>
+    );
+
+  }
 }
 
 export default Homepage;

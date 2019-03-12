@@ -7,12 +7,14 @@ import styled from 'styled-components';
 const LandingShotStyles = styled.div`
   position: relative;
   width: 100%;
+  height: 100%;
 `
 
 const ImageStyles = styled.img`
   background: no-repeat center center fixed;
   background-size: cover;
-  width: 100%
+  width: 100%;
+  height: 100%;
 `
 
 const FormStyles = styled.div`
