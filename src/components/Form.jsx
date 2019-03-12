@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { fetchCoords } from './../actions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { HashLink as Link } from 'react-router-hash-link';
 
 const FormStyles = styled.form`
   margin-left: 22%;
@@ -72,7 +73,7 @@ function Form({ dispatch }){
           <option value="rent">Rent</option>
           <option value="buy">Buy</option>
         </SelectInputStyles>
-        <FormButtonStyles type="submit">Look</FormButtonStyles>
+        <Link to='/#map-container'><FormButtonStyles type="submit">Look</FormButtonStyles></Link>
       </FormStyles>
   );
 }
