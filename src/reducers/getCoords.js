@@ -1,10 +1,7 @@
-import constants as types from './../constants';
+import * as types from './../constants/ActionTypes';
 
-
-const { types, initialState } = constants;
-
-const getCoordsReducer = (state = initialState.userCoords, action) => {
-  let newCoords ;
+export default( state = {}, action) => {
+  let newCoords;
   let newCoordsStateSlice;
   switch (action.type) {
     case types.GET_COORDS:
@@ -13,11 +10,10 @@ const getCoordsReducer = (state = initialState.userCoords, action) => {
         lng: action.lng,
         showMap: action.showMap
       }
+
       newCoordsStateSlice = Object.assign({},   state, newCoords);
       return newCoordsStateSlice;
     default:
       return state;
   }
 };
-
-export default getCoordsReducer;

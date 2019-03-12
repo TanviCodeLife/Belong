@@ -4,6 +4,8 @@ import Header from './Header';
 import Error404 from './Error404';
 import MapContainer from './MapContainer';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
@@ -20,18 +22,24 @@ const BodyStyles = styled.div`
 export class App extends React.Component{
   constructor(props){
     super(props);
-    c
+
+  }
+
+render(){
+console.log(this.props, 'props');
+  if(this.props.userCoords.showMap){
+    renderedContent = <MapContainer hoodData={this.props.hoodData}>
   }
   return (
-    <div>
-    <GlobalStyles />
     <BodyStyles>
+      <GlobalStyles />
       <Header />
       <Homepage />
+      {renderedContent}
     </BodyStyles>
-    <MapContainer/>
-    </div>
+
   );
+}
 }
 
 App.propTypes = {
@@ -40,8 +48,8 @@ App.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    showMap: state.showMap,
-    hoodData: state.currentCoords
+    userCoords: state.currentCoords,
+    hoodData: state.masterHoodsList
   }
 }
 
