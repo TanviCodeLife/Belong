@@ -12,17 +12,17 @@ describe("rootReducer", () => {
 
   test('Should return default state if no action type is recognized', () => {
     expect(rootReducer({}, {type: null})).toEqual({
-      currentCoords: {},
-      masterHoodsList: {}
+      userCoords: {},
+      hoodData: {}
     });
   });
 
   test('should return default state for getCoords if no action type is recognized', () => {
-    expect(store.getState().currentCoords).toEqual(getCoordsReducer(undefined, {type: null}));
+    expect(store.getState().userCoords).toEqual(getCoordsReducer(undefined, {type: null}));
   });
 
   test('should return default state for hoodsListReducer if no action types is recognized', () => {
-    expect(store.getState().masterHoodsList).toEqual(hoodsListReducer(undefined, {type: null}));
+    expect(store.getState().hoodData).toEqual(hoodsListReducer(undefined, {type: null}));
   });
 });
 
