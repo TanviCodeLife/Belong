@@ -1,10 +1,11 @@
 import * as types from './../constants/ActionTypes';
 import v4 from 'uuid/v4';
 
-export const requestCoords = ({ lat, lng }) => ({
+export const requestCoords = (lat, lng , showMap) => ({
   type: types.GET_COORDS,
   lat: lat,
-  lng: lng
+  lng: lng,
+  showMap: showMap
 })
 
 
@@ -18,7 +19,7 @@ export const saveHoods = (hoodName, hoodLat , hoodLng, hoodId, hoodDistance, hoo
     hoodCommuteTime: hoodCommuteTime
 });
 
-export function fetchCoords(address){
+export function fetchCoords(address, showMap){
   return function(dispatch){
     return fetch('https://maps.googleapis.com/maps/api/geocode/json?address='+address+'&key='+process.env.GOOGLE_API_KEY)
     .then((response) => response.json(),
@@ -26,8 +27,9 @@ export function fetchCoords(address){
     .then((json) => {
       console.log(json);
       const newCoords = json.results[0].geometry.location;
+      showMap = true;
       console.log(newCoords);
-      dispatch(requestCoords(newCoords));
+      dispatch(requestCoords(newCoords.lat, newCoords.lng, showMap));
       fetchNeighborhoods(newCoords, dispatch);
     });
   };

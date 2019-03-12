@@ -11,7 +11,7 @@ const LandingShotStyles = styled.div`
 `
 
 const ImageStyles = styled.img`
-  background: no-repeat center center fixed;
+  background: no-repeat center;
   background-size: cover;
   width: 100%;
   height: 100%;

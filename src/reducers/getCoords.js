@@ -7,7 +7,8 @@ export default( state = {}, action) => {
     case types.GET_COORDS:
       newCoords = {
         lat: action.lat,
-        lng: action.lng
+        lng: action.lng,
+        showMap: action.showMap
       }
       newCoordsStateSlice = Object.assign({},   state, newCoords);
       return newCoordsStateSlice;

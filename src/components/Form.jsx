@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { fetchCoords } from './../actions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { HashLink as Link } from 'react-router-hash-link';
+import { Link } from 'react-router-dom';
 
 const FormStyles = styled.form`
   margin-left: 22%;
@@ -55,11 +55,13 @@ const FormButtonStyles = styled.button`
 
 function Form({ dispatch }){
   let _address = null;
+  let showMap = false;
 
   function handleNewAddressFormSubmission(event){
     event.preventDefault();
     const formattedAddress = _address.value.replace(/\s/g, '+');
-    dispatch(fetchCoords(formattedAddress));
+    showMap = true;
+    dispatch(fetchCoords(formattedAddress, showMap));
   }
 
   return (
