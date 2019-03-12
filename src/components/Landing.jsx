@@ -1,5 +1,5 @@
 import React from 'react';
-import LandingShot from './assets/city-landing.jpg';
+import LandingShot from './assets/Portland_Belong.jpg';
 import Form from './Form';
 import styled from 'styled-components';
 
@@ -20,20 +20,29 @@ const ImageStyles = styled.img`
 const FormStyles = styled.div`
   position: absolute;
   display: block;
-  top: 60%;
+  top: 70%;
   right: 30%;
   width: 50%;
   height: 5%;
 `
 
+const FormWrapperStyles = styled.div`
+width: 100%;
+height: 20%;
+position: absolute;
+top: 62%;
+background-color: hsla(0, 100%, 90%, 0.3);
+
+`
 
 function Landing(){
   return (
     <LandingShotStyles>
       <ImageStyles src={LandingShot} alt='City Shot'/>
-      <FormStyles>
-        <Form/>
-      </FormStyles>
+       <FormWrapperStyles/>
+        <FormStyles>
+          <Form/>
+        </FormStyles>
     </LandingShotStyles>
   );
 }
