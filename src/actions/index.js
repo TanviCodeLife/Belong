@@ -62,6 +62,7 @@ export function fetchNeighborhoods(newCoords, dispatch){
       console.log('No neighborhoods found');
     }
     const origins = originsArr.join('|');
+    console.log(origins, 'origins');
     fetchDistanceAndTime(origins, newCoords, dispatch, originsData);
   });
 }
@@ -72,8 +73,9 @@ export function fetchDistanceAndTime(origins, newCoords, dispatch, originsData){
   .then((response) => response.json(),
   error => console.log('An error occurred.', error))
   .then(function(json) {
+    console.log(json.origin_addresses, "addresses");
     if(json.origin_addresses) {
-      console.log('distances', json.origin_addresses.rows);
+      console.log('distances', json.rows);
       json.rows.forEach((hood, i) => {
         const hoodDistance = hood.elements[0].distance.text;
         const hoodCommuteTime = hood.elements[0].duration.text;

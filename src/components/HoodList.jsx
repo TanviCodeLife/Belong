@@ -5,11 +5,11 @@ import styled from 'styled-components';
 
 
 const HoodListStyle = styled.div`
-  margin-top: 5%;
   margin-left: 2%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
   margin-top: -1.85rem;
 `;
 

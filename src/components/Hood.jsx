@@ -6,7 +6,7 @@ import PinIcon from './assets/pin_icon.png';
 
 const HoodStyle = styled.div`
   flex: auto;
-  width: 200px;
+  max-width: 200px;
   margin: 2rem;
   outline: 2px solid tomato;
   outline-offset: 7px;
@@ -22,7 +22,7 @@ const HoodStyle = styled.div`
 
 const ImageStyle = styled.img`
   height: 1.75rem;
-  margin-left: -1.5rem;
+  margin-left: -1.2rem;
 `
 
 function Hood({hoodName, hoodCommuteTime, hoodDistance}){

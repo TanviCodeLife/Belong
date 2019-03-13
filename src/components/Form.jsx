@@ -71,7 +71,6 @@ const ImageStyle = styled.img`
 function Form({ dispatch }){
   let _address = null;
   let showMap = false;
-
   function handleNewAddressFormSubmission(event){
     event.preventDefault();
     const formattedAddress = _address.value.replace(/\s/g, '+');

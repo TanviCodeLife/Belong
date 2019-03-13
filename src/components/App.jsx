@@ -22,7 +22,8 @@ const BodyStyles = styled.div`
 
 const ContainerStyles = styled.div`
  display: grid;
- grid-template-rows: 1fr 2.5fr 2fr;
+ grid-template-rows: 1fr 1fr;
+ grid-row-gap: 20px;
 `
 
 const ResultTextStyles = styled.h1`
@@ -53,7 +54,6 @@ render(){
         {renderedText}
         <ContainerStyles>
         {renderedMap}
-        <div></div>
         {renderedCard}
       </ContainerStyles>
       </BodyStyles>

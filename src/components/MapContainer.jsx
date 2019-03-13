@@ -4,11 +4,12 @@ import { connect } from 'react-redux';
 
 const style = {
   margin: '3.75%',
-  width: '93%',
+  width: '95%',
   height: '70%',
   position: 'relative',
   outline: '2px solid tomato',
-  outlineOffset: '5px'
+  outlineOffset: '5px',
+  paddingBottom: '-6px'
 };
 
 export class MapContainer extends React.Component {
