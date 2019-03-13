@@ -1,19 +1,24 @@
 import React from 'react';
 import Landing from './Landing';
-
 import styled from 'styled-components';
 
 const HomePageStyles = styled.div`
 
 `
 
-function Homepage(){
-  return (
-    <HomePageStyles>
-      <Landing />
+const LandingStyles = styled.div`
+  height: 100%;
+  margin-bottom: 5%;
+`
 
-    </HomePageStyles>
-  );
+function Homepage(){
+    return (
+      <HomePageStyles>
+        <LandingStyles>
+          <Landing />
+        </LandingStyles>
+      </HomePageStyles>
+    );
 }
 
 export default Homepage;

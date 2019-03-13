@@ -12,16 +12,17 @@ describe("rootReducer", () => {
 
   test('Should return default state if no action type is recognized', () => {
     expect(rootReducer({}, {type: null})).toEqual({
-      currentCoords: {}
+      userCoords: {},
+      hoodData: {}
     });
   });
 
   test('should return default state for getCoords if no action type is recognized', () => {
-    expect(store.getState().currentCoords).toEqual(getCoordsReducer(undefined, {type: null}));
+    expect(store.getState().userCoords).toEqual(getCoordsReducer(undefined, {type: null}));
   });
 
-  test('should return default state for hoosListReducer if no action types is recognized', () => {
-    expect(store.getState().masterHoodsList).toEqual(hoodsListReducer(undefned, {type: null}));
+  test('should return default state for hoodsListReducer if no action types is recognized', () => {
+    expect(store.getState().hoodData).toEqual(hoodsListReducer(undefined, {type: null}));
   });
 });
 
@@ -36,16 +37,38 @@ describe('getCoordsReducer', () => {
 describe('hoodListReducer', () => {
   let action;
   const sampleHoodData = {
-    displayName: 'Bethany',
+    hoodName: 'Bethany',
     hoodLat: 45.56433759999999,
     hoodLng: -122.8411631,
-    id: 0,
-    commuteTime: 0,
-    rentalRate: 0,
-    buyRate: 0
+    hoodId: 0,
+    hoodDistance: 2,
+    hoodCommuteTime: 1
   }
 
   test('should return default state if no action type is defined', () => {
-    expect(hoodListReducer({}, {type: null})).toEqual({});
+    expect(hoodsListReducer({}, {type: null})).toEqual({});
+  });
+
+  test('should add a new neighborhood to the masterHoodsList', () => {
+    const { hoodName, hoodLat, hoodLng, hoodId, hoodDistance, hoodCommuteTime } = sampleHoodData;
+    action = {
+      type: 'SAVE_HOOD',
+      hoodName: hoodName,
+      hoodLat: hoodLat,
+      hoodLng: hoodLng,
+      hoodId: hoodId,
+      hoodDistance: hoodDistance,
+      hoodCommuteTime: hoodCommuteTime
+    };
+    expect(hoodsListReducer({}, action)).toEqual({
+      [hoodId] : {
+        hoodName: hoodName,
+        hoodLat: hoodLat,
+        hoodLng: hoodLng,
+        hoodId: hoodId,
+        hoodDistance: hoodDistance,
+        hoodCommuteTime: hoodCommuteTime
+      }
+    });
   });
 });
