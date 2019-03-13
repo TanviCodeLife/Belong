@@ -53,8 +53,8 @@ const FormButtonStyles = styled.button`
   font-size: 1.15em;
   cursor: pointer;
   transition: all 0.2s;
-}
-  &:hover ${FormButtonStyles}{
+
+  :hover{
    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
    background: ff5050;
    border: 1px solid #F08080;

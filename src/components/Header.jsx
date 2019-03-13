@@ -4,7 +4,7 @@ import PinIcon from './assets/pin_icon.png';
 
 const HeaderStyle = styled.header`
   display: flex;
-  felx-direction: row;
+  flex-direction: row;
   align-items: center;
   justify-content: space;
   background: linear-gradient(to left, #ff5050 0%, #ffffcc 100%);

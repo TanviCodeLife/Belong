@@ -20,6 +20,15 @@ const BodyStyles = styled.div`
  height: 100%;
 `
 
+const ContainerStyles = styled.div`
+ display: grid;
+ grid-template-rows: 1fr 2.5fr 2fr;
+`
+
+const ResultTextStyles = styled.h1`
+  text-align: center;
+`
+
 export class App extends React.Component{
   constructor(props){
     super(props);
@@ -29,8 +38,10 @@ export class App extends React.Component{
 render(){
   let renderedMap;
   let renderedCard;
+  let renderedText;
   console.log(this.props, 'props');
   if(this.props.userCoords.showMap){
+    renderedText = <ResultTextStyles>Neigborhoods:</ResultTextStyles>
     renderedMap = <MapContainer userData={this.props}/>
     renderedCard = <HoodList cardData={this.props}/>
   }
@@ -39,8 +50,12 @@ render(){
         <GlobalStyles />
         <Header />
         <Homepage />
+        {renderedText}
+        <ContainerStyles>
         {renderedMap}
+        <div></div>
         {renderedCard}
+      </ContainerStyles>
       </BodyStyles>
 
     );

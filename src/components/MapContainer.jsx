@@ -3,7 +3,8 @@ import { Map, InfoWindow, Marker, Circle, GoogleApiWrapper } from 'google-maps-r
 import { connect } from 'react-redux';
 
 const style = {
-  width: '50%',
+  margin: '3.75%',
+  width: '93%',
   height: '70%',
   position: 'relative',
   outline: '2px solid tomato',
