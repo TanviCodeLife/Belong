@@ -29,8 +29,8 @@ function Hood({hoodName, hoodCommuteTime, hoodDistance}){
   return(
     <HoodStyle>
     <h3><ImageStyle src={PinIcon} alt='Logo'/>{hoodName}</h3>
-    <p><strong>Travel Time:</strong>{hoodCommuteTime} by car</p>
-    <p><strong>Distance:</strong> {hoodDistance}</p>
+    <p><strong>Drive Time: </strong>{hoodCommuteTime}</p>
+    <p><strong>Distance: </strong> {hoodDistance}</p>
     </HoodStyle>
   );
 }
