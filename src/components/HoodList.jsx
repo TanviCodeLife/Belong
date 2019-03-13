@@ -10,7 +10,7 @@ const HoodListStyle = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center
-  margin-top: 5%;
+  margin-top: 130px;
 `;
 
 

@@ -5,7 +5,7 @@
 
 ## Description
 A web application that helps you move into any new area by showing you information about nearby neighborhoods so you can see how well they suit your style.
-
+![project](ProjectSnapshot.png)
 
 ## Table of Contents
   1. [MVP](#specs-work)
@@ -26,7 +26,7 @@ A web application that helps you move into any new area by showing you informati
 
 ##### Filtering the Search Results By clicking on the Filter Options button, you can filter the search results by the following criteria:
 
-* Price
+* Rental and Purchase options
 
 ##### Exploring a Neighborhood's Details
 
