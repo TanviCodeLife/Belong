@@ -1,3 +1,3 @@
 ## PLAN
 
-![](CapStone_Epicodus.png)
+![plan](Project_Structure.png)
