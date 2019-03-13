@@ -1,26 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Icon } from 'react-materialize';
 import { v4 } from 'uuid';
 
-function Interest({label, icon, list}){
+function Hood({hoodName, hoodCommuteTime, hoodDistance}){
   return(
-    <div className='content content-body'>
-      <Icon>{icon}</Icon>
-      <h3>{label}</h3>
-      <ul>
-        {list.map((item) =>
-          <li key={v4()}>{item}</li>
-        )}
-      </ul>
+    <div>
+    <h3>{hoodName}</h3>
+    <p>{hoodCommuteTime}</p>
+    <p><strong>Distance:</strong> {hoodDistance}</p>
     </div>
   );
 }
 
-Interest.propTypes = {
-  label: PropTypes.string.isRequired,
-  icon: PropTypes.string.isRequired,
-  list: PropTypes.array.isRequired,
+Hood.propTypes = {
+  hoodName: PropTypes.string.isRequired,
+  hoodCommuteTime: PropTypes.string.isRequired,
+  hoodDistance: PropTypes.string.isRequired,
 };
 
-export default Interest;
+export default Hood;

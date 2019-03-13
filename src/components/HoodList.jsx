@@ -1,28 +1,25 @@
 import React from 'react';
-import Interest from './Interest';
+import Hood from './Hood';
 import { v4 } from 'uuid';
 
-function InterestList(props) {
+function HoodList(props) {
 
   return(
     <div>
-      <h2>Interests</h2>
+      <h2>Hoods List</h2>
       <div>
-        {Object.keys(this.props.cardData.hoodData).map((hoodId) => {
+        {Object.keys(props.cardData.hoodData).map((hoodId) => {
 
-          let card = this.props.cardData.hoodData[hoodId]
-          return <Marker title={card.hoodName}
-            position={{lat: card.hoodLat, lng: card.hoodLng}}
-            address={card.hoodName}
-            commute={card.hoodCommuteTime}
-            distance={card.hoodDistance}
-            onClick={this.onMarkerClick}
+          let card = props.cardData.hoodData[hoodId]
+           return <Hood hoodName={card.hoodName}
+            hoodCommuteTime={card.hoodCommuteTime}
+            hoodDistance={card.hoodDistance}
             key={hoodId} />
-        }
-      )}
+        })}
+
       </div>
     </div>
   );
 }
 
-export default InterestList;
+export default HoodList;

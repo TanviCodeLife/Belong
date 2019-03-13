@@ -3,6 +3,7 @@ import Homepage from './Homepage';
 import Header from './Header';
 import Error404 from './Error404';
 import MapContainer from './MapContainer';
+import HoodList from './HoodList';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -31,14 +32,14 @@ render(){
   console.log(this.props, 'props');
   if(this.props.userCoords.showMap){
     renderedMap = <MapContainer userData={this.props}/>
-    renderedCard = <HoodList cardData={this.props}>
+    renderedCard = <HoodList cardData={this.props}/>
   }
   return (
       <BodyStyles>
         <GlobalStyles />
         <Header />
         <Homepage />
-        {renderedContent}
+        {renderedMap}
         {renderedCard}
       </BodyStyles>
 
