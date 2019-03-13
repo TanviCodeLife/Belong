@@ -14,6 +14,7 @@ const HoodStyle = styled.div`
   background-color: hsla(0, 100%, 90%, 0.3);
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
+  padding-left: 3.5%;
 
 :hover{
    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
