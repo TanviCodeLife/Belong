@@ -3,9 +3,10 @@ import { Map, InfoWindow, Marker, Circle, GoogleApiWrapper } from 'google-maps-r
 import { connect } from 'react-redux';
 
 const style = {
-  margin: '3.75%',
-  width: '95%',
-  height: '70%',
+  width: '50%',
+  height: '95%',
+  marginLeft: '2%',
+  marginRight: '2%',
   position: 'relative',
   outline: '2px solid tomato',
   outlineOffset: '5px',
@@ -43,7 +44,9 @@ export class MapContainer extends React.Component {
         zoom={12}>
 
 
-        {Object.keys(this.props.userData.hoodData).map((hoodId) => {
+        {Object.keys(this.props.userData.hoodData)
+          .filter((hoodId, index) => (index < 10))
+          .map((hoodId) => {
 
           let marker = this.props.userData.hoodData[hoodId]
           return <Marker title={marker.hoodName}

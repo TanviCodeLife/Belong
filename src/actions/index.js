@@ -38,7 +38,8 @@ export function fetchCoords(address, showMap){
 export function fetchNeighborhoods(newCoords, dispatch){
   const originsArr = [];
   let originsData = {};
-  return fetch(`https://maps.googleapis.com/maps/api/place/textsearch/json?location=${ newCoords.lat }, ${ newCoords.lng }&radius=5000&type=neighborhood&key=${ process.env.GOOGLE_API_KEY }`).then((response) => response.json(),
+ 
+  return fetch(`https://maps.googleapis.com/maps/api/place/textsearch/json?location=${ newCoords.lat }, ${ newCoords.lng }&radius=500&type=neighborhood&key=${ process.env.GOOGLE_API_KEY }`).then((response) => response.json(),
   error => console.log('An error occurred.', error))
   .then(function(json) {
     if(json.results) {

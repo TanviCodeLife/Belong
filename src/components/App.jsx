@@ -1,8 +1,8 @@
 import React from 'react';
-import Homepage from './Homepage';
 import Header from './Header';
 import Error404 from './Error404';
 import MapContainer from './MapContainer';
+import Landing from './Landing';
 import HoodList from './HoodList';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
@@ -21,9 +21,9 @@ const BodyStyles = styled.div`
 `
 
 const ContainerStyles = styled.div`
- display: grid;
- grid-template-rows: 1fr 1fr;
- grid-row-gap: 40px;
+ display: flex;
+ flex-direction: row;
+ justify-content: space-between;
 `
 
 const ResultTextStyles = styled.h1`
@@ -40,20 +40,23 @@ render(){
   let renderedMap;
   let renderedCard;
   let renderedText;
+  let renderSpace;
   console.log(this.props, 'props');
   if(this.props.userCoords.showMap){
     renderedText = <ResultTextStyles>Neigborhoods:</ResultTextStyles>
     renderedMap = <MapContainer userData={this.props}/>
+    renderSpace = <div>      </div>
     renderedCard = <HoodList cardData={this.props}/>
   }
   return (
       <BodyStyles>
         <GlobalStyles />
         <Header />
-        <Homepage />
+        <Landing />
         {renderedText}
         <ContainerStyles>
         {renderedMap}
+        {renderSpace}
         {renderedCard}
       </ContainerStyles>
       </BodyStyles>
